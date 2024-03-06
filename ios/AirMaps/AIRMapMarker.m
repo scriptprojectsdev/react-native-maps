@@ -23,7 +23,7 @@ NSInteger const AIR_CALLOUT_OPEN_ZINDEX_BASELINE = 999;
 @implementation AIRMapMarker {
     BOOL _hasSetCalloutOffset;
     RCTImageLoaderCancellationBlock _reloadImageCancellationBlock;
-    MKPinAnnotationView *_pinView;
+    MKAnnotationView *_pinView;
     BOOL _calloutIsOpen;
     NSInteger _zIndexBeforeOpen;
 }
@@ -82,7 +82,7 @@ NSInteger const AIR_CALLOUT_OPEN_ZINDEX_BASELINE = 999;
     if ([self shouldUsePinView]) {
         // In this case, we want to render a platform "default" marker.
         if (_pinView == nil) {
-            _pinView = [[MKPinAnnotationView alloc] initWithAnnotation:self reuseIdentifier: nil];
+            _pinView = [[MKAnnotationView alloc] initWithAnnotation:self reuseIdentifier: nil];
             [self addGestureRecognizerToView:_pinView];
             _pinView.annotation = self;
         }
@@ -94,7 +94,7 @@ NSInteger const AIR_CALLOUT_OPEN_ZINDEX_BASELINE = 999;
         // versions. Right now it's just leaving it with the default color. People needing the colors are free to
         // use their own custom markers.
         if ([_pinView respondsToSelector:@selector(setPinTintColor:)]) {
-            _pinView.pinTintColor = self.pinColor;
+            //_pinView.pinTintColor = self.pinColor;
         }
 
         return _pinView;
@@ -337,7 +337,7 @@ NSInteger const AIR_CALLOUT_OPEN_ZINDEX_BASELINE = 999;
     _pinColor = pinColor;
 
     if ([_pinView respondsToSelector:@selector(setPinTintColor:)]) {
-        _pinView.pinTintColor = _pinColor;
+        //_pinView.pinTintColor = _pinColor;
     }
 }
 
